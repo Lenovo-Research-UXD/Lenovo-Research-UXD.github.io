@@ -187,6 +187,47 @@ ESLint 关闭格式化功能，仅启用静态检查功能，代码格式化检�
 
 ### 4. Commit Message规范
 
+Commit Message 参考 Angular 规范，并做了一定的简化。信息的提交格式为:
+```
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+```
+
+#### type
+
+`type` 用于说明 commit 类型，只能是以下类型之一。
+
+|   类型   |                描述                |
+| :------: | :--------------------------------: |
+|   feat   |            新增feature             |
+|   fix    |              修复bug               |
+|   docs   |             仅修改文档             |
+|  style   |             仅修改格式             |
+| refactor |              重构代码              |
+|   perf   |              优化相关              |
+|   test   | 测试相关，包括单元测试、集成测试等 |
+|  chore   | 改变构建流程，或改动依赖库、工具等 |
+|  revert  |                回滚                |
+
+#### scope 
+
+`scope` 用于说明 commit 影响的范围。如果没有合适的范围，可以使用 `*`。
+
+#### subject 
+`subject` 是 commit 目的的简短描述，其规则为:
+
+- 不超过50个字符
+- 以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+- 第一个字母小写
+- 结尾不加句点
+
+#### body (可选)
+
+`body`是对本次 commit 的详细描述，可以分成多行。规则为：
+- 使用第一人称现在时
+- 应该说明代码变动的动机，以及与以前行为的对比。
+
 ### 5. Git Hooks
 
 可以使用 [Git Hooks](https://git-scm.com/docs/githooks) 在代码提交前执行检察。最常见的用法是安装 [lint-staged](https://github.com/okonet/lint-staged#readme) 和 [Husky](https://github.com/typicode/husky#readme)，在`pre-commit`阶段执行检查，强制规范代码格式和 Commit Message。
@@ -255,3 +296,4 @@ ESLint 关闭格式化功能，仅启用静态检查功能，代码格式化检�
 1. [JavaScript变量命名](https://juejin.cn/post/6977245873797349413)
 2. [Google JavaScript Style Guideline](https://google.github.io/styleguide/jsguide.html)
 3. [Google TypeScript Style Guideline](https://google.github.io/styleguide/tsguide.html)
+4. [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
