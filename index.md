@@ -282,6 +282,10 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 
 ### 黄显鹏
 
+- 技术栈 - vue2.0/js
+- 擅长后台管理系统的前端实现
+- 熟悉各种html布局方式，写过小程序
+
 ### 李金星
 
 - 技术栈 - 前端vue3/javascript; 后端flask/python; 原生微信小程序
@@ -297,3 +301,4 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 2. [Google JavaScript Style Guideline](https://google.github.io/styleguide/jsguide.html)
 3. [Google TypeScript Style Guideline](https://google.github.io/styleguide/tsguide.html)
 4. [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
+5. [Code Guide by @AlloyTeam](http://alloyteam.github.io/CodeGuide/)
