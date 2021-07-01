@@ -7,7 +7,6 @@
 ### 0 命名原则
 
 #### 以小驼峰形式命名
-
 第一个字母小写，剩下的每个单词的首字母大写。
 
 #### 常量可以采用全大写的形式，但普通的`const`修饰的变量不应该大写
@@ -88,32 +87,25 @@
 ```
 
 #### lang属性
-
 在html标签上加上lang属性，这会对语音工具和翻译工具有帮助。
-
 ```html
 <!DOCTYPE html>
 <html lang="en-us">
     ...
 </html>
 ```
-
 sitepoint的[语言列表](http://reference.sitepoint.com/html/lang-codes)
 微软给出的[详细语言列表](http://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx),其中细分了zh-cn,zh-hk,zh-tw等等
 
 #### 字符编码
-
 通常指定为`UTF-8`
 
 #### IE兼容模式
-
 用`<meta>`指定页面用什么版本的IE来渲染
 
 #### CSS/JS引入
-
 引入时不需要指明`type`，因为有默认值`text/css`和`text/javascript`
 HTML5规范链接
-
 - [使用link](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element)
 - [使用style](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element)
 - [使用script](http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element)
@@ -137,9 +129,7 @@ HTML5规范链接
 ```
 
 #### 属性顺序
-
 属性应该以特定顺序出现 以保证易读性
-
 1. `class`
 2. `id`
 3. `name`
@@ -158,19 +148,14 @@ HTML5规范链接
 ```
 
 #### boolean属性
-
 boolean属性指不需要声明取值的属性。但XHTML需要每个属性声明取值，HTML5不需要。
-
 >boolean属性存在 即表示取值为true 不存在即表示取值为false
 
 #### JS生成标签
-
 在JS文件中生成标签让内容变得更难查找，更难编辑，性能更差。应该尽量避免这种情况的出现。
 
 #### 减少标签数量
-
 避免多余的父节点
-
 ```html
 <!-- Not well -->
 <span class="avatar">
@@ -182,7 +167,6 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 ```
 
 #### ✨实用高于完美
-
 尽量遵循HTML标准和语义，但是不应该以浪费实用性作为代价；
 任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。
 
@@ -287,7 +271,6 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 ```
 
 下面是推荐的属性的顺序
-
 ```css
 [
     [
@@ -652,7 +635,35 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 去掉不必要的父级引用符号'&'。
 
 ```css
-/* not good */@import "_dialog.scss";/* good */@import "dialog";/* not good */.fatal {    @extend .error;}/* good */.fatal {    @extend %error;}/* not good */.element {    & > .dialog {        ...    }}/* good */.element {    > .dialog {        ...    }}
+/* not good */
+@import "_dialog.scss";
+
+/* good */
+@import "dialog";
+
+/* not good */
+.fatal {
+    @extend .error;
+}
+
+/* good */
+.fatal {
+    @extend %error;
+}
+
+/* not good */
+.element {
+    & > .dialog {
+        ...
+    }
+}
+
+/* good */
+.element {
+    > .dialog {
+        ...
+    }
+}
 ```
 
 #### 杂项
@@ -684,7 +695,84 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 尽量少用'*'选择器。
 
 ```css
-/* not good */.element {}/* not good */LI {    ...}/* good */li {    ...}/* not good */.element {    color: rgba(0, 0, 0, 0.5);}/* good */.element {    color: rgba(0, 0, 0, .5);}/* not good */.element {    width: 50.0px;}/* good */.element {    width: 50px;}/* not good */.element {    width: 0px;}/* good */.element {    width: 0;}/* not good */.element {    border-radius: 3px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    background: linear-gradient(to bottom, #fff 0, #eee 100%);    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);    background: -moz-linear-gradient(top, #fff 0, #eee 100%);}/* good */.element {    -webkit-border-radius: 3px;       -moz-border-radius: 3px;            border-radius: 3px;    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);    background:    -moz-linear-gradient(top, #fff 0, #eee 100%);    background:         linear-gradient(to bottom, #fff 0, #eee 100%);}/* not good */.element {    color: rgb(0, 0, 0);    width: 50px;    color: rgba(0, 0, 0, .5);}/* good */.element {    color: rgb(0, 0, 0);    color: rgba(0, 0, 0, .5);}
+/* not good */
+.element {
+}
+
+/* not good */
+LI {
+    ...
+}
+
+/* good */
+li {
+    ...
+}
+
+/* not good */
+.element {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* good */
+.element {
+    color: rgba(0, 0, 0, .5);
+}
+
+/* not good */
+.element {
+    width: 50.0px;
+}
+
+/* good */
+.element {
+    width: 50px;
+}
+
+/* not good */
+.element {
+    width: 0px;
+}
+
+/* good */
+.element {
+    width: 0;
+}
+
+/* not good */
+.element {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    background: linear-gradient(to bottom, #fff 0, #eee 100%);
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background: -moz-linear-gradient(top, #fff 0, #eee 100%);
+}
+
+/* good */
+.element {
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
+    background:         linear-gradient(to bottom, #fff 0, #eee 100%);
+}
+
+/* not good */
+.element {
+    color: rgb(0, 0, 0);
+    width: 50px;
+    color: rgba(0, 0, 0, .5);
+}
+
+/* good */
+.element {
+    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, .5);
+}
 ```
 
 ### 4 JavaScript/TypeScript
@@ -710,7 +798,16 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 - do-while
 
 ```js
-/* let declaration */let x = 1;/* expression statement */x++;/* do-while */do {    x++;} while (x < 10);
+/* let declaration */
+let x = 1;
+
+/* expression statement */
+x++;
+
+/* do-while */
+do {
+    x++;
+} while (x < 10);
 ```
 
 #### 空格
@@ -740,7 +837,55 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 - 函数的参数之间
 
 ```js
-// not goodlet a = {    b :1};// goodlet a = {    b: 1};// not good++ x;y ++;z = x?1:2;// good++x;y++;z = x ? 1 : 2;// not goodlet a = [ 1, 2 ];// goodlet a = [1, 2];// not goodlet a = ( 1+2 )*3;// goodlet a = (1 + 2) * 3;// no space before '(', one space before '{', one space between function parameterslet doSomething = function(a, b, c) {    // do something};// no space before '('doSomething(item);// not goodfor(i=0;i<6;i++){    x++;}// goodfor (i = 0; i < 6; i++) {    x++;}
+// not good
+let a = {
+    b :1
+};
+
+// good
+let a = {
+    b: 1
+};
+
+// not good
+++ x;
+y ++;
+z = x?1:2;
+
+// good
+++x;
+y++;
+z = x ? 1 : 2;
+
+// not good
+let a = [ 1, 2 ];
+
+// good
+let a = [1, 2];
+
+// not good
+let a = ( 1+2 )*3;
+
+// good
+let a = (1 + 2) * 3;
+
+// no space before '(', one space before '{', one space between function parameters
+let doSomething = function(a, b, c) {
+    // do something
+};
+
+// no space before '('
+doSomething(item);
+
+// not good
+for(i=0;i<6;i++){
+    x++;
+}
+
+// good
+for (i = 0; i < 6; i++) {
+    x++;
+}
 ```
 
 #### 空行
@@ -753,7 +898,68 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 - 文件最后保留一个空行
 
 ```js
-// need blank line after letiable declarationlet x = 1;// not need blank line when letiable declaration is last expression in the current blockif (x >= 1) {    let y = x + 1;}let a = 2;// need blank line before line commenta++;function b() {    // not need blank line when comment is first line of block    return a;}// need blank line after blocksfor (let i = 0; i < 2; i++) {    if (true) {        return false;    }    continue;}let obj = {    foo: function() {        return 1;    },    bar: function() {        return 2;    }};// not need blank line when in argument list, array, objectfunc(    2,    function() {        a++;    },    3);let foo = [    2,    function() {        a++;    },    3];let foo = {    a: 2,    b: function() {        a++;    },    c: 3};
+// need blank line after letiable declaration
+let x = 1;
+
+// not need blank line when letiable declaration is last expression in the current block
+if (x >= 1) {
+    let y = x + 1;
+}
+
+let a = 2;
+
+// need blank line before line comment
+a++;
+
+function b() {
+    // not need blank line when comment is first line of block
+    return a;
+}
+
+// need blank line after blocks
+for (let i = 0; i < 2; i++) {
+    if (true) {
+        return false;
+    }
+
+    continue;
+}
+
+let obj = {
+    foo: function() {
+        return 1;
+    },
+
+    bar: function() {
+        return 2;
+    }
+};
+
+// not need blank line when in argument list, array, object
+func(
+    2,
+    function() {
+        a++;
+    },
+    3
+);
+
+let foo = [
+    2,
+    function() {
+        a++;
+    },
+    3
+];
+
+
+let foo = {
+    a: 2,
+    b: function() {
+        a++;
+    },
+    c: 3
+};
 ```
 
 #### 换行
@@ -771,7 +977,59 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 - 变量赋值后
 
 ```js
-// not goodvar a = {    b: 1    , c: 2};x = y    ? 1 : 2;// goodvar a = {    b: 1,    c: 2};x = y ? 1 : 2;x = y ?    1 : 2;// no need line break with 'else', 'catch', 'finally'if (condition) {    ...} else {    ...}try {    ...} catch (e) {    ...} finally {    ...}// not goodfunction test(){    ...}// goodfunction test() {    ...}// not goodvar a, foo = 7, b,    c, bar = 8;// goodvar a,    foo = 7,    b, c, bar = 8;
+// not good
+var a = {
+    b: 1
+    , c: 2
+};
+
+x = y
+    ? 1 : 2;
+
+// good
+var a = {
+    b: 1,
+    c: 2
+};
+
+x = y ? 1 : 2;
+x = y ?
+    1 : 2;
+
+// no need line break with 'else', 'catch', 'finally'
+if (condition) {
+    ...
+} else {
+    ...
+}
+
+try {
+    ...
+} catch (e) {
+    ...
+} finally {
+    ...
+}
+
+// not good
+function test()
+{
+    ...
+}
+
+// good
+function test() {
+    ...
+}
+
+// not good
+var a, foo = 7, b,
+    c, bar = 8;
+
+// good
+var a,
+    foo = 7,
+    b, c, bar = 8;
 ```
 
 #### 引号
@@ -779,7 +1037,12 @@ boolean属性指不需要声明取值的属性。但XHTML需要每个属性声�
 最外层统一使用**单引号**
 
 ```js
-// not goodvar x = "test";// goodvar y = 'foo',    z = '<div id="test"></div>';
+// not good
+var x = "test";
+
+// good
+var y = 'foo',
+    z = '<div id="test"></div>';
 ```
 
 #### 变量命名
@@ -972,7 +1235,6 @@ if (condition) {
 注释虽然写起来很痛苦, 但对保证代码可读性至关重要。下面的规则描述了如何注释以及在哪儿注释. 当然也要记住: 注释固然很重要, 但最好的代码本身应该是自文档化. 有意义的类型名和变量名, 要远胜过要用注释解释的含糊不清的名字。
 
 #### [JSDoc](https://jsdoc.app/)
-
 如果你在项目中使用 JavaScript 作为开发语言，那么我强烈建议你使用 JSDoc。它可以为 VSCode 生成智能提示，从而使开发者很容易了解整个类和其中的属性和方法，并且快速知道如何使用，从而提高开发效率，降低维护成本。而且，VSCode 对于 JSDoc 的支持是开箱即用的。
 
 如果你在项目中使用 TypeScript，依然应当使用 JSDoc 来作为文档注释。得益于 TypeScript 的类型系统，你通常只需要 `@param` 和 `@return` 标签即可。
@@ -1020,7 +1282,23 @@ let x = 1;
 - 所有类
 
 ```js
-/** * @func * @desc 一个带参数的函数 * @param {string} a - 参数a * @param {number} b=1 - 参数b默认值为1 * @param {string} c=1 - 参数c有两种支持的取值</br>1—表示x</br>2—表示xx * @param {object} d - 参数d为一个对象 * @param {string} d.e - 参数d的e属性 * @param {string} d.f - 参数d的f属性 * @param {object[]} g - 参数g为一个对象数组 * @param {string} g.h - 参数g数组中一项的h属性 * @param {string} g.i - 参数g数组中一项的i属性 * @param {string} [j] - 参数j是一个可选参数 */function foo(a, b, c, d, g, j) {    ...}
+/**
+ * @func
+ * @desc 一个带参数的函数
+ * @param {string} a - 参数a
+ * @param {number} b=1 - 参数b默认值为1
+ * @param {string} c=1 - 参数c有两种支持的取值</br>1—表示x</br>2—表示xx
+ * @param {object} d - 参数d为一个对象
+ * @param {string} d.e - 参数d的e属性
+ * @param {string} d.f - 参数d的f属性
+ * @param {object[]} g - 参数g为一个对象数组
+ * @param {string} g.h - 参数g数组中一项的h属性
+ * @param {string} g.i - 参数g数组中一项的i属性
+ * @param {string} [j] - 参数j是一个可选参数
+ */
+function foo(a, b, c, d, g, j) {
+    ...
+}
 ```
 
 #### 变量注释
@@ -1034,7 +1312,6 @@ let x = 1;
 
 注释位于声明之前, 对函数功能及用法进行描述。
 函数声明处的注释应当至少包括以下内容:
-
 1. 函数的描述
 2. 函数的输参数及其类型
 3. 函数的输出及其类型
@@ -1056,27 +1333,34 @@ let x = 1;
 #### 类型注解
 
 1. 非空 (non-null) 和可空 (nullable) 标识符
-
+   
    类型系统定义了 `!` 和 `?` 运算符来表示非空和可空。原始类型 (`string`, `number`, `boolean`, `symbol`, `undefined`, `null`) 和字面量 (`{function(...): ...}` 和 `{{foo: string...}}`) 默认是非空类型，在类型前面加 `?` 可以使它们可空; 对于引用类型，应当显式使用 `?` 或 `!` 来表示它们是否可空。
 
 2. 模板参数
-
+   
    对于模板类型，必须显式指定其参数类型。例如:
-
    ``` javascript
-    // bad const /** !Object */ users = {}; const /** !Array */ books = []; const /** !Promise */ response = ...;  // good const /** !Object<string, !User> */ users = {}; const /** !Array<string> */ books = []; const /** !Promise<!Response> */ response = ...; 
+    // bad
+    const /** !Object */ users = {};
+    const /** !Array */ books = [];
+    const /** !Promise */ response = ...;
+    
+    // good
+    const /** !Object<string, !User> */ users = {};
+    const /** !Array<string> */ books = [];
+    const /** !Promise<!Response> */ response = ...;
+    
    ```
-
+  
 3. 函数类型表达式 (function type expression)
 
-   > 函数类型表达式是指类型注解中带有`function`关键字的类型注解
+    > 函数类型表达式是指类型注解中带有`function`关键字的类型注解
 
-   当有函数定义时，使用 `@param` 和 `@return` 进行注解，不要使用函数类型表达式。在将匿名函数或已定义函数赋值给变量时，才应该使用函数类型表达式。在使用函数类型表达式时，显式写出返回类型。
+    当有函数定义时，使用 `@param` 和 `@return` 进行注解，不要使用函数类型表达式。在将匿名函数或已定义函数赋值给变量时，才应该使用函数类型表达式。在使用函数类型表达式时，显式写出返回类型。
 
 4. 格式要求
-
-   在类型注解中，应当在每个逗号或分号后面插入一个空格或换行。额外的空行可以增加可读性，同时避免超过编辑器列宽限制。
-
+   
+    在类型注解中，应当在每个逗号或分号后面插入一个空格或换行。额外的空行可以增加可读性，同时避免超过编辑器列宽限制。
 ### 6 代码校验
 
 为了保证每个人的代码风格与本规范一致，应使用 [ESLint](http://eslint.cn/) + [Prettier](https://www.prettier.cn/) 来格式化代码。
@@ -1102,9 +1386,10 @@ ESLint 关闭格式化功能，仅启用静态检查功能，代码格式化检�
 ### 4 Commit Message规范
 
 Commit Message 参考 Angular 规范，并做了一定的简化。信息的提交格式为:
-
 ```
-<type>(<scope>): <subject><BLANK LINE><body>
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
 ```
 
 #### type
@@ -1128,7 +1413,6 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 `scope` 用于说明 commit 影响的范围。如果没有合适的范围，可以使用 `*`。
 
 #### subject 
-
 `subject` 是 commit 目的的简短描述，其规则为:
 
 - 不超过50个字符
@@ -1139,7 +1423,6 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 #### body (可选)
 
 `body`是对本次 commit 的详细描述，可以分成多行。规则为：
-
 - 使用第一人称现在时
 - 应该说明代码变动的动机，以及与以前行为的对比。
 
@@ -1152,7 +1435,6 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 ### 1. 项目内容
 
 我们推荐使用 [Visual Studio Code](https://code.visualstudio.com) 来编写项目代码。在你新建项目时，在根目录下新建 `.vscode` 文件夹，并在其中写入配置文件。你的 `.vscode` 文件夹中至少应包含如下文件:
-
 1. `settings.json` - 用于统一编辑器和插件设置
 2. `launch.json` - 用于调试项目
 
@@ -1186,8 +1468,6 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 
 > 基于姓氏首字母排序
 
-
-
 ## PART5 成员技术栈及优势方向
 
 > 确定个人技术优势方向，便于成员间请教问题
@@ -1213,7 +1493,6 @@ Commit Message 参考 Angular 规范，并做了一定的简化。信息的提�
 - 传感器等硬件开发方向
 
 ## 参考
-
 1. [JavaScript变量命名](https://juejin.cn/post/6977245873797349413)
 2. [Google JavaScript Style Guideline](https://google.github.io/styleguide/jsguide.html)
 3. [Google TypeScript Style Guideline](https://google.github.io/styleguide/tsguide.html)
